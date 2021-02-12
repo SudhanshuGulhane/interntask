@@ -22,6 +22,7 @@ public class UserController {
     //For registering new user
     @PostMapping("/users/signup")
     public Status register(@Valid @RequestBody User user){
+        //receiving user details in Json response, used Postman app for operations
         List<User>savedUser = userRepo.findAll();     //retrieving users from database
         for(User temp:savedUser){
             if(temp.equals(user)){
@@ -35,6 +36,7 @@ public class UserController {
     //For sign-in operation
     @PostMapping("/users/login")
     public Status login(@Valid @RequestBody User user){
+        //receiving user details in Json response
         List<User>savedUser = userRepo.findAll();       //retrieving users from database
         for(User temp:savedUser){
             if(temp.getUsername().equals(user.getUsername()) &&
@@ -49,6 +51,7 @@ public class UserController {
     //For resetting the user password
     @PostMapping("/users/reset")
     public Status resetPassword(@Valid @RequestBody User user){
+        //receiving user details in Json response
         //User object contains email and the new password of user who wish to change the password
         List<User>savedUser = userRepo.findAll();
         for(User temp:savedUser){
